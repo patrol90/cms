@@ -19,7 +19,7 @@
                 {{ Form::input('text', 'name', $page->name, ['class' => 'form-control']) }}
                 </p>
                 <p>
-                {{Form::textarea('body',$page->body, ['class'=>'form-control'])}}
+                {{Form::textarea('body',$page->body, ['class'=>'form-control',])}}
                 </p>
             </div>
         </div>

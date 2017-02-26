@@ -16,21 +16,22 @@
 </div>
 
 <!-- Example row of columns -->
+
 <div class="row">
-    <div class="col-lg-4">
-        <h2>{{$content[1]->name}}</h2>
-        {{$content[1]->body}}
-        <p><a class="btn btn-primary" href="/{{$content[1]->id}}" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-lg-4">
-        <h2>{{$content[2]->name}}</h2>
-        {{$content[2]->body}}
-        <p><a class="btn btn-primary" href="/{{$content[2]->id}}" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-lg-4">
-        <h2>{{$content[3]->name}}</h2>
-        {{$content[3]->body}}
-        <p><a class="btn btn-primary" href="/{{$content[3]->id}}" role="button">View details &raquo;</a></p>
-    </div>
+
+    @foreach($content as $post)
+        <div class="col-lg-4 post-info" >
+            <h2>{{$post->name}}</h2>
+          <div>  <?php
+              $text=$post->body;
+              echo htmlspecialchars($text,ENT_HTML5);
+              ?></div>
+            @if (Auth::check())
+            <p><a class="btn btn-primary edit-con"  href="/{{$post->id}}/edit" id="{{$post->id}}" role="button">Edit</a></p>
+            @else
+            @endif
+        </div>
+    @endforeach
+
 </div>
 @endsection

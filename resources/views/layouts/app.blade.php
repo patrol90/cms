@@ -19,6 +19,8 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <script src="../ckeditor/ckeditor.js"></script>
+
 </head>
 <body>
 
@@ -70,7 +72,38 @@
 
     </div>
 
-    <!-- Scripts -->
+
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>   <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+       var arr= document.querySelectorAll(".edit-con");
+       for( var i=0;i<arr.length;i++){
+           arr[i].addEventListener("click",get_content,false);
+
+       }
+
+        function get_content(element){
+            element.preventDefault();
+            element=element.target;
+            console.log(element.id);
+            var ElemId=element.id;
+            $('.modal-content').load(ElemId+'/edit .panel-body');
+
+            $(".modal").modal('show');
+        }
+
+
+    </script>
+    <script>
+
+        CKEDITOR.replace( 'body' );
+    </script>
 </body>
 </html>

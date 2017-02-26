@@ -20,6 +20,7 @@ Route::resource('/', 'ContentController');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/{id}', 'ContentController@show');
+    Route::get('/create', 'ContentController@create');
 
     Route::patch('/update/{id}', 'ContentController@update');
     Route::get('/{id}/edit', 'ContentController@edit');
